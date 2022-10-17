@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.reveni</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="30"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside" >
+                <div class="app_settings_block" data-string="Reveni Settings" string="Reveni" data-key="rma_reveni">
+                    <h2>Reveni Settings</h2>
+                    <div class="row mt16 o_settings_container" name="reveni_credentials_setting_container">
+                        <div class="col-12 col-lg-12 o_setting_box" id="reveni_debug">
+<label for="reveni_debug" string="Debug"/>
+                            <div class="text-muted">
+                                Enable Sandbox mode
+                            </div>
+                            <field name="reveni_debug"/>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible':[['reveni_debug','=',True]]}" id="reveni_api_key_credentials"
+                             title="Reveni credentials Settings">
+                            <label for="reveni_api_key" string="Api Key"/>
+                            <div class="text-muted">
+                                Api Key of reveni account
+                            </div>
+                            <field name="reveni_api_key"/>
+                        </div>
+
+                        <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible':[['reveni_debug','=',False]]}" id="reveni_sand_box_api_key_credentials"
+                             title="Reveni credentials Settings Sandbox">
+                            <label for="reveni_sandbox_api_key" string="Sandbox Api Key"/>
+                            <div class="text-muted">
+                                SandBox Api Key of reveni account
+                            </div>
+                            <field name="reveni_sandbox_api_key"/>
+                        </div>
+
+                        <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible':[['reveni_debug','=',True]]}" id="reveni_store_id_credentials"
+                             title="Reveni Store">
+                            <label for="reveni_store_id" string="Store Id"/>
+                            <div class="text-muted">
+                                Store Id of reveni account
+                            </div>
+                            <field name="reveni_store_id"/>
+                        </div>
+
+                        <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible':[['reveni_debug','=',False]]}" id="reveni_sand_box_store_id_credentials"
+                             title="Reveni Store Sandbox">
+                            <label for="reveni_sandbox_store_id" string="Sandbox store Id"/>
+                            <div class="text-muted">
+                                Sandbox Store  of reveni account
+                            </div>
+                            <field name="reveni_sandbox_store_id"/>
+                        </div>
+
+
+
+                        <div class="col-12 col-lg-12 o_setting_box" id="reveni_webhook_secret"
+                                 title="Reveni Webhook Settings">
+
+                                <button type="object"
+                                        name="action_reveni_webhook_subscribe"
+                                        string="Generate New Webhook"
+                                        class="oe_highlight"/>
+<!--                            <label for="reveni_webhook_ids" string="Webhook Secret"/>-->
+                                <div class="text-muted">
+                                    Webhook events
+                                </div>
+                            <field name="reveni_webhook_ids" mode="tree,form">
+                                <tree delete="1">
+                                    <field name="webhook_name"/>
+                                    <field name="webhook_url"/>
+                                    <field name="webhook_active" widget="boolean"/>
+                                </tree>
+
+                            </field>
+
+                            </div>
+
+                    </div>
+
+
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+admin_webhooks,webhooks_admin,model_reveni_webhook,base.group_system,1,1,1,1
+user_webhooks,webhooks_user,model_reveni_webhook,base.group_user,1,0,0,0
+admin_event,webhooks_admin_event,model_reveni_webhook_event,base.group_system,1,1,1,1
+user_event,webhooks_user_event,model_reveni_webhook_event,base.group_user,1,0,0,0
+admin_event_event,webhooks_admin_event_event,model_reveni_event,base.group_system,1,1,1,1
+user_event_event,webhooks_user_event_event,model_reveni_event,base.group_user,1,0,0,0

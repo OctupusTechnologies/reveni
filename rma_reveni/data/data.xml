@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record model="reveni.webhook.event" id="reveni_webhook_event_refund_created">
+            <field name="webhook_event_name">Refund Created</field>
+            <field name="webhook_event_code">return.created</field>
+        </record>
+        <record model="reveni.webhook.event" id="reveni_webhook_event_refund_updated">
+            <field name="webhook_event_name">Refund Updated</field>
+            <field name="webhook_event_code">return.updated</field>
+        </record>
+        <record model="claim.reject.message" id="claim_reject_defect">
+            <field name="name">Defect</field>
+            <field name="code">defect</field>
+        </record>
+        <record model="claim.reject.message" id="claim_reject_wrong_product">
+            <field name="name">Wrong Product</field>
+            <field name="code">wrong_product</field>
+        </record>
+        <record model="claim.reject.message" id="claim_reject_change_of_mind">
+            <field name="name">Change of mind</field>
+            <field name="code">change_of_mind</field>
+        </record>
+        <record model="claim.reject.message" id="claim_reject_delay">
+            <field name="name">Delay</field>
+            <field name="code">delay</field>
+        </record>
+    </data>
+</odoo>

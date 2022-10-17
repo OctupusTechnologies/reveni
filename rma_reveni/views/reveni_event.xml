@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="reveni_event_tree">
+            <field name="name">reveni.event.tree</field>
+            <field name="model">reveni.event</field>
+            <!--            <field name="inherit_id" ref="reveni.reveni_event_tree"/>-->
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="create_date"
+                           string="Date"
+                    />
+                    <field name="event_name"/>
+                    <field name="event_type"/>
+                    <field name="state" widget="badge"/>
+                    <field name="rma_claim_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="reveni_event_form">
+            <field name="name">reveni.event.form</field>
+            <field name="model">reveni.event</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_process_event"
+                            string="Process Event Manually"
+                            type="object" class="btn-primary"
+                            attrs="{'invisible':[('state','in',('done','cancel'))]}"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="event_name"/>
+                                <field name="event_type"/>
+
+                            </group>
+                            <group>
+                                <field name="rma_claim_id"/>
+                                <field name="event_data" widget="text"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="reveni_event_action">
+            <field name="name">Reveni Events</field>
+            <field name="res_model">reveni.event</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="reveni_event_tree"/>
+        </record>
+        <record model="ir.ui.menu" id="reveni_event_menu">
+            <field name="name">Reveni Events</field>
+            <field name="parent_id" ref="rma_ept.menu_crm_claim_ept_after_sale"/>
+            <field name="action" ref="reveni_event_action"/>
+            <field name="sequence" eval="10"/>
+        </record>
+
+
+    </data>
+</odoo>
